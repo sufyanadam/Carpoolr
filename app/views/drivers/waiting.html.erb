@@ -1,0 +1,18 @@
+
+
+<p>Potential riders will see that there are <%= Driver.waiting.count %> drivers waiting for riders at Richmond Parkway</p>
+
+<br />
+<br />
+
+<p>
+  To avoid being marked as stale, please hit this refresh button at least every<%= distance_of_time_in_words Driver::MAX_LAST_SEEN_AT %>
+</p>
+
+<%= button_to "refresh/I'm still waiting!", '', :method => :get %>
+<p> <%= @driver.last_seen_at.in_time_zone(-8).strftime("%H:%M:%S") %> </p>
+
+<br />
+<br />
+
+<%= button_to "exit/Got my Riders!", @driver, :method => :delete %>

@@ -1,0 +1,16 @@
+<p>Potential drivers will see that there are <%= @rider.pickup_spot.waiting_riders.count %> riders waiting at <%= @rider.pickup_spot.name %></p>
+
+<br />
+<br />
+
+<p>
+  To avoid being marked as stale, please hit this refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %>
+</p>
+
+<%= button_to "refresh/I'm still waiting!", '', :method => :get %>
+<p> As of <%= @rider.last_seen_at.in_time_zone(-8).strftime("%H:%M:%S") %>,    you are still waiting </p>
+
+<br />
+<br />
+
+<%= button_to "exit/Got my Ride!", @rider,  :method => :delete %>

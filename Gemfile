@@ -10,6 +10,7 @@ gem 'sqlite3'
 group :development do
     
   gem 'heroku'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 end
 
