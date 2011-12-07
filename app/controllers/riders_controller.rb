@@ -1,8 +1,11 @@
 class RidersController < ApplicationController
   def create
-    #session[:rider_id] = Rider.create!(:pickup_spot_id => pickup_spot_id).id
     session[:rider_id] = Rider.create!(params[:rider]).id
     redirect_to :action => :waiting
+  end
+
+  def location
+    
   end
   
   def waiting

@@ -6,11 +6,13 @@
         return false
       }
     })
+  $("#new_rider input").click(function(){
+  this.form.submit()
+  })
   })
 </script>
 
-<h2>Welcome carpoolr!</h2>
-
+<p>Need a ride? Please tell us where you are</p>
 <%= form_for Rider.new do |f| %>
   <% PickupSpot.all.each do |spot| %>
     <%= f.radio_button :pickup_spot_id, spot.id %>
@@ -23,6 +25,7 @@
 <br />
 <br />
 
+
 <%= form_for Driver.new do |f| %>
-  <%= f.submit "Find Riders!"%>
+  <%= f.submit "Driving? Find waiting Riders!"%>
 <% end %>

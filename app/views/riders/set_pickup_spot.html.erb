@@ -2,4 +2,12 @@
 
 <br />
 
-<%= #Add a form for creating a rider and passing in the pickup_spot_id as a paramrailseter %>
+<%= form_for Rider.new do |f| %>
+  <% PickupSpot.all.each do |spot| %>
+    <%= f.radio_button :pickup_spot_id, spot.id %>
+    <%= f.label "pickup_spot_id_#{spot.id}", spot.name %>
+    <br />
+  <% end %>
+  <%= f.submit "Find a Ride!" %>
+<% end %>
+    

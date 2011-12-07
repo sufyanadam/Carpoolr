@@ -12,5 +12,6 @@
 class PickupSpot < ActiveRecord::Base
   attr_accessible :name, :lat, :lng
   has_many :waiting_riders, :conditions => Rider.waiting_condition, :class_name => "Rider"
+  has_many :waiting_drivers, :conditions => Driver.waiting, :class_name => "Driver"
 
 end

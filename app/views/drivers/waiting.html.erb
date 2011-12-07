@@ -1,18 +1,24 @@
-<ul>
-  <% PickupSpot.all.each do |spot| %>
-  <li><%= spot.waiting_riders.count %> Riders waiting at <%= spot.name %></li>
+  <%= form_for Driver.new do |f| %>
+    <% PickupSpot.all.each do |spot| %>
+      <%= f.radio_button :pickup_spot_id, spot.id %>
+      <%= f.label "pickup_spot_id_#{spot.id}", "#{spot.name} - #{spot.waiting_riders.count} riders waiting, #{spot.waiting_drivers.count} drivers waiting" %>
     <% end %>
-</ul>
+    <%= f.submit "Tell Riders I'm here!" %>
+    <%= f.submit "Tell Riders I'll be there in 5 minutes" %>
+  <% end %>
 
-
-<br />
-<br />
-
-
-<%= button_to "refresh/I'm still waiting!", '', :method => :get %>
-<p> <%= @driver.last_seen_at.in_time_zone(-8).strftime("%H:%M:%S") %> </p>
+<%= button_to "Refresh/I'm still waiting!", '', :method => :get %>
 
 <br />
-<br />
 
-<%= button_to "exit/Got my Riders!", @driver, :method => :delete %>
+<%= button_to "Exit/Got my Riders!", @driver, :method => :delete %>
+
+
+
+
+
+
+
+
+
+

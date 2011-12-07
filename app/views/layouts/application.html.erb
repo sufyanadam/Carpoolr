@@ -2,13 +2,36 @@
 <html>
 <head>
   <title>Carpoolr</title>
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+ 
+  <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+ 
+  <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+<div data-role="page">
 
+<div data-role="header">
+
+<h1>Find CarpooLRz</h1>
+
+</div> <!-- /header -->
+
+<div data-role="content">
+<%= yield %>
+</div> <!-- /content -->
+
+<div data-role="footer">
+<h4>&copy s_adam</h4>
+</div> <!-- /footer -->
+
+</div>
 </body>
 </html>

@@ -2,6 +2,7 @@ Carpoolr::Application.routes.draw do
   resources :riders do
     collection do
       get :waiting
+      get :set_pickup_location
     end
   end
 
