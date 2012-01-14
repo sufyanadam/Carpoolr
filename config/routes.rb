@@ -11,6 +11,12 @@ Carpoolr::Application.routes.draw do
       get :waiting
     end
   end
+  
+  resources :pickup_spots do
+    collection do
+      get :show_status
+    end
+  end
 
   root :to => 'home#index'
 

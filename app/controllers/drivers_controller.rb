@@ -1,4 +1,7 @@
 class DriversController < ApplicationController
+  
+  def new
+  end
 
   def create
     session[:driver_id] = Driver.create!.id

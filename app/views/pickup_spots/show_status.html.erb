@@ -1,0 +1,5 @@
+<% PickupSpot.all.each do |spot| %>
+  <%= f.radio_button :pickup_spot_id, spot.id %>
+  <%= f.label "pickup_spot_id_#{spot.id}", spot.name %>
+  <br />
+<% end %>

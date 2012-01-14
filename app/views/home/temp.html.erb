@@ -1,0 +1,30 @@
+<script>                                                                                                                                                                             
+  $(function(){                                                                                                                                                                      
+    $("#new_rider").submit(function(){                                                                                                                                               
+      if ($("input:checked", this).length == 0){                                                                                                                                     
+        alert('Please select a pickup spot');                                                                                                                                        
+        return false                                                                                                                                                                 
+      }                                                                                                                                                                              
+    })                                                                                                                                                                               
+  $("#new_rider input").click(function(){                                                                                                                                            
+  this.form.submit()                                                                                                                                                                 
+  })                                                                                                                                                                                 
+  })                                                                                                                                                                                 
+</script>                                                                                                                                                                            
+                                                                                                                                                                                     
+<p>Need a ride? Please tell us where you are</p>                                                                                                                                     
+<%= form_for Rider.new do |f| %>                                                                                                                                                     
+  <% PickupSpot.all.each do |spot| %>                                                                                                                                                
+    <%= f.radio_button :pickup_spot_id, spot.id %>                                                                                                                                   
+    <%= f.label "pickup_spot_id_#{spot.id}", spot.name %>                                                                                                                            
+    <br />                                                                                                                                                                           
+  <% end %>                                                                                                                                                                          
+  <%= f.submit "Find a Ride!"%>                                                                                                                                                      
+<% end %>                                                                                                                                                                            
+                                                                                                                                                                                     
+<br />                                                                                                                                                                               
+<br />                                                                                                                                                                               
+                                                                                                                                                                                     
+<%= form_for Driver.new do |f| %>                                                                                                                                                    
+  <%= f.submit "Driving? Find waiting Riders!"%>                                                                                                                                     
+<% end %> 
