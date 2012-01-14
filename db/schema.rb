@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 20111205041028) do
 
   create_table "drivers", :force => true do |t|
-    t.integer  "number_of_seats",                                :default => 0, :null => false
-    t.decimal  "lat",             :precision => 3, :scale => 10
-    t.decimal  "lng",             :precision => 3, :scale => 10
+    t.integer  "number_of_seats",                                 :default => 0, :null => false
+    t.decimal  "lat",             :precision => 15, :scale => 10
+    t.decimal  "lng",             :precision => 15, :scale => 10
     t.datetime "last_seen_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20111205041028) do
 
   create_table "pickup_spots", :force => true do |t|
     t.string   "name"
-    t.decimal  "lat",        :precision => 3, :scale => 10
-    t.decimal  "lng",        :precision => 3, :scale => 10
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
