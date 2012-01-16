@@ -15,8 +15,9 @@ class Driver < ActiveRecord::Base
   MAX_LAST_SEEN_AT = 5.minutes
   attr_accessible :number_of_seats, :lat, :lng, :last_seen_at, :pickup_spot_id
   belongs_to (:pickup_spot)
+  validates_presence_of :pickup_spot
 
-  def self.waiting
+  def self.waiting_condition
     {:last_seen_at => MAX_LAST_SEEN_AT.ago..(Time.now)}
   end
 

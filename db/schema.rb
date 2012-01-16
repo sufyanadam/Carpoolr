@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205041028) do
+ActiveRecord::Schema.define(:version => 20111201032052) do
 
   create_table "drivers", :force => true do |t|
+    t.integer  "pickup_spot_id"
     t.integer  "number_of_seats",                                 :default => 0, :null => false
     t.decimal  "lat",             :precision => 15, :scale => 10
     t.decimal  "lng",             :precision => 15, :scale => 10
     t.datetime "last_seen_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pickup_spot_id"
   end
 
   create_table "pickup_spots", :force => true do |t|

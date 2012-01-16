@@ -1,6 +1,7 @@
 class Initial < ActiveRecord::Migration
   def change
     create_table :drivers do |t|
+      t.integer :pickup_spot_id
       t.integer :number_of_seats, :null => false, :default => 0
       t.decimal :lat, :precision => 15, :scale => 10
       t.decimal :lng, :precision => 15, :scale => 10

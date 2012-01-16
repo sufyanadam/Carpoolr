@@ -1,16 +1,25 @@
+<script>
+  $(function(){
+    $("#new_driver").submit(function(){
+      if ($("input:checked", this).length == 0){
+        alert('Please select a pickup spot');
+        return false
+      }
+    })
+  $("#new_driver input").click(function(){
+  this.form.submit()
+  })
+  })
+</script>
+
+<p>If you are waiting for riders, just tap/click your location below to tell them you're waiting</p>
 <%= form_for Driver.new do |f| %>
   <% PickupSpot.all.each do |spot| %>
     <%= f.radio_button :pickup_spot_id, spot.id %>
-    <%= f.label "pickup_spot_id_#{spot.id}", "<table><tr><td>#{spot.name} - </td><td> #{spot.waiting_riders.count} #{image_tag('man_symbol.png')}, #{spot.waiting_drivers.count} #{image_tag('car_symbol.png')}</td></tr></table>".html_safe %>
+    <%= f.label "pickup_spot_id_#{spot.id}", "#{spot.name} - #{spot.waiting_riders.count} #{image_tag('man_symbol.png')}, #{spot.waiting_drivers.count} #{image_tag('car_symbol.png')}".html_safe %>
   <% end %>
-  <%= f.submit "Tell Riders I'm here!" %>
-  <%= f.submit "Tell Riders I'll be there in 5 minutes" %>
+  <%#= f.submit "Find a Ride!"%>
 <% end %>
-
-<%= button_to "Refresh/I'm still waiting!", '', :method => :get %>
-<br />
-<%= button_to "Exit/Got my Riders!", @driver, :method => :delete %>
-
 
 
 

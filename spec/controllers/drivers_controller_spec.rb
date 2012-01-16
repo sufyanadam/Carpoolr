@@ -2,22 +2,27 @@ require 'spec_helper'
 
 describe DriversController do
   describe "#create" do
+
+    before do 
+      @options = { :driver => {:pickup_spot_id => PickupSpot.create!(:name => "Richmond Pkwy").id } }
+    end
+    
     it "creates a driver" do
       lambda {
-        post :create
+        post :create, @options
       }.should change{ Driver.count }.by +1
     end
     
     it "redirects to waiting" do
-      post :create
+      post :create, @options
       response.should redirect_to "/drivers/waiting"
       session[:driver_id].should == Driver.last.id
     end
   end
 
-  describe "#waiting" do
+  describe "#waiting"  do
     it "should render" do
-      session[:driver_id] = Driver.create!.id
+      session[:driver_id] = Driver.create!(:pickup_spot_id => PickupSpot.create!.id ).id
       get :waiting
       response.should render_template "waiting"
     end

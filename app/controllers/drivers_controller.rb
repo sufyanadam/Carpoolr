@@ -4,7 +4,7 @@ class DriversController < ApplicationController
   end
 
   def create
-    session[:driver_id] = Driver.create!.id
+    session[:driver_id] = Driver.create!(params[:driver]).id
     redirect_to :action => :waiting
   end
 
