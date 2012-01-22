@@ -1,9 +1,37 @@
-<p> As of <%= @rider.last_seen_at.in_time_zone(-8).strftime("%H:%M:%S") %>, you are waiting for a ride </p>
-<p>Potential drivers will see that <%= @rider.pickup_spot.waiting_riders.count %> riders are waiting at <%= @rider.pickup_spot.name %></p>
+<p>You're all set!</p>
+
+<table>
+  <tr>
+    <td>
+      <%= @rider.pickup_spot.name %>
+    </td>
+    <td>
+      <%= image_tag('man_symbol.png') %>
+    </td>
+    <td>
+      <%= image_tag('car_symbol.png') %>
+    </td>
+  </tr>
+  <tr>
+    <td />
+    <td>
+      <%= @rider.pickup_spot.waiting_riders.count %>
+    </td>
+    <td>
+      <%= @rider.pickup_spot.waiting_drivers.count %>
+    </td>
+  </tr>
+</table>
+
+<!-- <p> As of <%= @rider.last_seen_at.in_time_zone(-8).strftime("%I:%M:%S %p") %>, you are waiting for a ride </p> -->
+<!-- <p>Potential drivers will see that  -->
+<!--   <%="#{@rider.pickup_spot.waiting_riders.count} #{image_tag('man_symbol.png')}".html_safe %> are waiting at <%= @rider.pickup_spot.name %></p> -->
 <p>
-  To avoid being marked as stale, please hit this refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %>
+  Hit the refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> minutes to avoid being marked as stale. You will also see if any drivers might be on their way
 </p>
 
 <%= button_to "Refresh/I'm still waiting!", '', :method => :get %>
 
 <%= button_to "Exit/Got my Ride!", @rider,  :method => :delete %>
+
+

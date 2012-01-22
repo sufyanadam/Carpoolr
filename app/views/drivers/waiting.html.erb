@@ -1,5 +1,5 @@
-<p> As of <%= @driver.last_seen_at.in_time_zone(-8).strftime("%hh:%mm:%s") %>, you are waiting for riders </p>
-<p>Potential drivers will see that <%#= @driver.pickup_spot.waiting_drivers.count %> drivers are waiting at <%= @driver.pickup_spot.name %></p>
+<p> As of <%= @driver.last_seen_at.in_time_zone(-8).strftime("%I:%M%p") %>, you are waiting for riders </p>
+<p>Potential riders will see that <%= @driver.pickup_spot.waiting_drivers.count %> drivers are waiting at <%= @driver.pickup_spot.name %></p>
 <p>
   To avoid being marked as stale, please hit this refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %>
 </p>

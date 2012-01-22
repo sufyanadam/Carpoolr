@@ -11,14 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201032052) do
+ActiveRecord::Schema.define(:version => 20120117024142) do
+
+  create_table "destination_spots", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "drivers", :force => true do |t|
     t.integer  "pickup_spot_id"
-    t.integer  "number_of_seats",                                 :default => 0, :null => false
-    t.decimal  "lat",             :precision => 15, :scale => 10
-    t.decimal  "lng",             :precision => 15, :scale => 10
+    t.integer  "number_of_seats",                                     :default => 0, :null => false
+    t.decimal  "lat",                 :precision => 15, :scale => 10
+    t.decimal  "lng",                 :precision => 15, :scale => 10
     t.datetime "last_seen_at"
+    t.integer  "destination_spot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20111201032052) do
   create_table "riders", :force => true do |t|
     t.integer  "pickup_spot_id"
     t.datetime "last_seen_at"
+    t.integer  "destination_spot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe RidersController do
   describe "#create" do
+    it "redirects to set destination if pickup_spot is San Francisco" do
+    
+    end
+
     it "creates a rider" do
       lambda {
         post :create 

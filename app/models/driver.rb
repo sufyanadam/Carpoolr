@@ -13,8 +13,9 @@
 
 class Driver < ActiveRecord::Base
   MAX_LAST_SEEN_AT = 5.minutes
-  attr_accessible :number_of_seats, :lat, :lng, :last_seen_at, :pickup_spot_id
+  attr_accessible :number_of_seats, :lat, :lng, :last_seen_at, :pickup_spot_id, :destination_spot_id
   belongs_to (:pickup_spot)
+  belongs_to (:destination_spot_id)
   validates_presence_of :pickup_spot
 
   def self.waiting_condition

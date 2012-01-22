@@ -6,12 +6,14 @@ class Initial < ActiveRecord::Migration
       t.decimal :lat, :precision => 15, :scale => 10
       t.decimal :lng, :precision => 15, :scale => 10
       t.timestamp :last_seen_at
+      t.integer :destination_spot_id
       t.timestamps
     end
 
     create_table :riders do |t|
       t.integer :pickup_spot_id
       t.timestamp :last_seen_at
+      t.integer :destination_spot_id
       t.timestamps
     end
 
@@ -19,6 +21,11 @@ class Initial < ActiveRecord::Migration
       t.string :name
       t.decimal :lat, :precision => 15, :scale =>10
       t.decimal :lng, :precision => 15, :scale => 10
+      t.timestamps
+    end
+
+    create_table :destination_spots do |t|
+      t.string :name
       t.timestamps
     end
   end

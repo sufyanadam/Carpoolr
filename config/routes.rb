@@ -3,6 +3,9 @@ Carpoolr::Application.routes.draw do
     collection do
       get :waiting
       get :set_pickup_location
+      get :set_destination_spot
+      get :sf_waiting
+      post :sf_create
     end
   end
 

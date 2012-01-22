@@ -4,3 +4,8 @@ Features to be implemented include:
 - Using geolocation to detect whether a rider/driver is still available
 
 - Proximity based notifications to riders/drivers for spontaneous carpool matching (i.e, breaking free of the constraints of designated pickup locations)
+
+
+TODO:
+
+Error in sf_waiting.html.erb -> fix problem with destination spot

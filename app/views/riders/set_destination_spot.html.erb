@@ -11,11 +11,11 @@
   })
   })
 </script>
-<p>Where are you waiting? </p>
+<p>Where are you going?</P>
 <%= form_for Rider.new do |f| %>
-  <% PickupSpot.all.each do |spot| %>
-    <%= f.radio_button :pickup_spot_id, spot.id %>
-    <%= f.label "pickup_spot_id_#{spot.id}", spot.name %>
-    <br />
+  <% DestinationSpot.find(:all, :conditions => ["name != ?", "San Francisco"]).each do |spot| %>
+    <%= f.radio_button :destination_spot_id, spot.id %>
+    <%= f.label "destination_spot_id_#{spot.id}", spot.name %>
+    </br>
   <% end %>
 <% end %>

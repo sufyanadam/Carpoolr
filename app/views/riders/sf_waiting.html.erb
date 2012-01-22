@@ -1,0 +1,29 @@
+<p>You've successfully told drivers that you're waiting!</p>
+<p>They will see that <%= @rider.destination_spot.waiting_riders.count %> riders are waiting at <%= @rider.pickup_spot.name %> going to <%= @rider.destination_spot.name %></p>
+<br/>
+<table>
+  <tr>
+    <td>
+      Destination
+    </td>
+    <td>
+      <%= image_tag('man_symbol.png') %> 
+    </td>
+    <td>
+      <%= image_tag('car_symbol.png') %> 
+    </td>
+  </tr>
+  <% DestinationSpot.find(:all, :conditions => ["name != ?", "San Francisco"]).each do |spot| %>
+    <tr>      
+      <td>
+       <%= spot.name %>
+      </td>
+      <td>
+        <%= spot.waiting_riders.count %>
+      </td>
+      <td>
+        <%= spot.waiting_drivers.count %>
+      </td>
+    </tr>
+  <% end %>
+</table>
