@@ -5,7 +5,8 @@ gem 'rails', '3.1.1'
 group :development do
   gem 'heroku'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-  gem 'sqlite3'   
+  #gem 'sqlite3'   
+  gem 'pg'
 end
 
 group :production do 

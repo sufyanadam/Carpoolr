@@ -36,6 +36,8 @@ Carpoolr::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
+  config.logger = Logger.new(STDOUT)
+
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
