@@ -1,11 +1,11 @@
 <script>
   $(function(){
-    $("#new_rider").submit(function(){
-      if ($("input:checked", this).length == 0){
-        alert('Please select a pickup spot');
-        return false
-      }
-    })
+  $("#new_rider").submit(function(){
+  if ($("input:checked", this).length == 0){
+  alert('Please select a pickup spot');
+  return false
+  }
+  })
   $("#new_rider input").click(function(){
   this.form.submit()
   })

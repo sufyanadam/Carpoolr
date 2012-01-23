@@ -2,16 +2,16 @@ Carpoolr::Application.routes.draw do
   resources :riders do
     collection do
       get :waiting
-      get :set_pickup_location
       get :set_destination_spot
       get :sf_waiting
-      post :sf_create
     end
   end
 
   resources :drivers do
     collection do
       get :waiting
+      get :set_destination_spot
+      get :sf_waiting
     end
   end
   
