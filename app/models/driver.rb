@@ -19,10 +19,10 @@ class Driver < ActiveRecord::Base
   validates_presence_of :pickup_spot
 
   def self.waiting_condition
-    {:last_seen_at => MAX_LAST_SEEN_AT.ago..(Time.now)}
+    {:last_seen_at => MAX_LAST_SEEN_AT.ago..(Time.current)}
   end
 
   def seen!
-    update_attributes(:last_seen_at => Time.now)
+    update_attributes(:last_seen_at => Time.current)
   end
 end
