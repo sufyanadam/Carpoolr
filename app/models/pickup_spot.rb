@@ -11,8 +11,8 @@
 
 class PickupSpot < ActiveRecord::Base
   attr_accessible :name, :lat, :lng
-  has_many :waiting_riders, :conditions => lambda { Rider.waiting_condition }, :class_name => "Rider"
-  has_many :waiting_drivers, :conditions => lambda { Driver.waiting_condition }, :class_name => "Driver"
+  has_many :waiting_riders, :conditions => lambda {|_| Rider.waiting_condition }, :class_name => "Rider"
+has_many :waiting_drivers, :conditions => lambda { |_| Driver.waiting_condition }, :class_name => "Driver"
   
   def self.san_francisco
     find_by_name("San Francisco") || raise("San Francisco not found! (earthquake?)")
