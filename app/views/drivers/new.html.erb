@@ -16,6 +16,6 @@
 <%= form_for Driver.new do |f| %>
   <% PickupSpot.all.each do |spot| %>
     <%= f.radio_button :pickup_spot_id, spot.id %>
-    <%= f.label "pickup_spot_id_#{spot.id}", "#{spot.name} - #{spot.waiting_riders.count} #{image_tag('man_symbol.png')}, #{spot.waiting_drivers.count} #{image_tag('car_symbol.png')}".html_safe %>
+    <%= f.label "pickup_spot_id_#{spot.id}", "#{spot.name}" %>
   <% end %>
 <% end %>
