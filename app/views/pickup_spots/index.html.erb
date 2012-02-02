@@ -1,0 +1,28 @@
+<table width="100%" height="100%">
+  <thead>
+    <tr>
+      <th>
+        Pickup Spot
+      </th>
+      <th>
+      <%= image_tag('man_symbol.png') %>
+    </th>
+    <th>
+      <%= image_tag('car_symbol.png') %>
+    </th>
+    </tr>
+    <tbody>
+      <% PickupSpot.all.each do |spot| %>
+        <tr>
+          <td>
+            <%= spot.name %> 
+          </td>
+          <td>
+            <%= spot.waiting_riders.count %>
+          </td>
+          <td>
+            <%= spot.waiting_drivers.count %>
+          </td>
+        </tr>
+      <% end %>
+</table>

@@ -29,7 +29,7 @@
 </table>
 
 <p>
-  Hit the refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> minutes to avoid being marked as stale. You will also see if any riders might be on their way
+  Hit the refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> to avoid being marked as stale. You will also see if any riders might be on their way
 </p>
 
 <%= button_to "Refresh", '', :method => :get %>

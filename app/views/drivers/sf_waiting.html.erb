@@ -1,5 +1,4 @@
 <p>It won't be too long before you're cruising along!</p>
-<!-- <p>We'll tell riders <%#= @driver.destination_spot.waiting_drivers.count %> you're  waiting at <%= @driver.pickup_spot.name %> for  <%= @driver.destination_spot.name %> riders</p> -->
 <p>Hit refresh to update the stats below and publish that you're still waiting every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %>, otherwise you'll be marked as stale </p>
 
 <%= button_to "Refresh", '', :method => :get %>

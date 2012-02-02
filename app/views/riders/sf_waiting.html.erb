@@ -1,6 +1,6 @@
 <p>It won't be too long before you're cruising along!</p>
 
-<p>Hit refresh to update the stats below and publish that you're still waiting, you will be marked as stale after <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> minutes of inactivity </p>
+<p>Hit refresh to update the stats below and publish that you're still waiting, you will be marked as stale after <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> of inactivity </p>
 <table>
   <tr>
     <td>
@@ -31,3 +31,6 @@
     </tr>
   <% end %>
 </table>
+
+<br />
+<%= button_to "Refresh", '', :method => :get %>
