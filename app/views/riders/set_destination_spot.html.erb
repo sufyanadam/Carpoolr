@@ -1,21 +1,7 @@
-<script>
-  $(function(){
-    $("#new_rider").submit(function(){
-      if ($("input:checked", this).length == 0){
-        alert('Please select a pickup spot');
-        return false
-      }
-    })
-  $("#new_rider input").click(function(){
-  this.form.submit()
-  })
-  })
-</script>
 <p>Where are you going?</P>
 <%= form_for Rider.new do |f| %>
-  <% DestinationSpot.find(:all, :conditions => ["name != ?", "San Francisco"]).each do |spot| %>
-    <%= f.radio_button :destination_spot_id, spot.id %>
-    <%= f.label "destination_spot_id_#{spot.id}", spot.name %>
+  <% DestinationSpot.where(["name != ?", "San Francisco"]).each do |spot| %>
+    <%= button_link_to spot.name, riders_path(:rider => {:destination_spot_id => spot.id}), :method => :post %>
     </br>
   <% end %>
 <% end %>

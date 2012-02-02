@@ -1,21 +1,4 @@
-<script>
-  $(function(){
-    $("#new_driver").submit(function(){
-      if ($("input:checked", this).length == 0){
-        alert('Please select a pickup spot');
-        return false
-      }
-    })
-  $("#new_driver input").click(function(){
-  this.form.submit()
-  })
-  })
-</script>
-
 <p>If you are waiting for riders, just tap/click your location below to tell them you're waiting</p>
-<%= form_for Driver.new do |f| %>
-  <% PickupSpot.all.each do |spot| %>
-    <%= f.radio_button :pickup_spot_id, spot.id %>
-    <%= f.label "pickup_spot_id_#{spot.id}", "#{spot.name}" %>
-  <% end %>
+<% PickupSpot.all.each do |spot| %>
+  <%= button_link_to spot.name, drivers_url(:driver => {:pickup_spot_id => spot.id}), :method => :post  %>
 <% end %>
