@@ -1,4 +1,4 @@
-<p>If you are waiting for riders, just tap/click your location below to tell them you're waiting</p>
+<p>If you are waiting for riders, just hit your location below to tell them you're waiting</p>
 <% PickupSpot.all.each do |spot| %>
   <%= button_link_to spot.name, drivers_url(:driver => {:pickup_spot_id => spot.id}), :method => :post  %>
 <% end %>
