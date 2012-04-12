@@ -1,7 +1,1 @@
-<p>Where are you going?</P>
-<%= form_for Rider.new do |f| %>
-  <% DestinationSpot.where(["name != ?", "San Francisco"]).each do |spot| %>
-    <%= button_link_to spot.name, riders_path(:rider => {:destination_spot_id => spot.id}), :method => :post %>
-    </br>
-  <% end %>
-<% end %>
+<%= render 'shared/spot_select', :type => :rider %>

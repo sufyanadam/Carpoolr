@@ -1,39 +1,9 @@
 <p>You're all set!</p>
 
-<table>
-  <tr>
-    <td>
-      <%= @rider.pickup_spot.name %>
-    </td>
-    <td />
-    <td>
-      <%= image_tag('man_symbol.png') %>
-    </td>
-    <td />
-    <td>
-      <%= image_tag('car_symbol.png') %>
-    </td>
-  </tr>
-  <tr>
-    <td />
-    <td />
-    <td>
-      <%= @rider.pickup_spot.waiting_riders.count %>
-    </td>
-    <td />
-    <td align="center">
-      <%= @rider.pickup_spot.waiting_drivers.count %>
-    </td>
-  </tr>
-</table>
-
+<%= render 'shared/spot_stats', :resource => @rider %>
 
 <p>
   Hit the refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> minutes to avoid being marked as stale. You will also see if any drivers might be on their way
 </p>
 
-<%= button_to "Refresh", '', :method => :get %>
-
-<%= button_to "Exit/Got my Ride!", @rider,  :method => :delete %>
-
-
+<%= render 'navigation' %>

@@ -1,0 +1,5 @@
+<p>Where are you going?</P>
+<% DestinationSpot.where(["name != ?", "San Francisco"]).each do |spot| %>
+  <%= button_link_to spot.name, send("#{type}s_path", type => {:destination_spot_id => spot.id}), :method => :post %>
+  </br>
+<% end %>

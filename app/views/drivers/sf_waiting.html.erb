@@ -1,33 +1,6 @@
 <p>It won't be too long before you're cruising along!</p>
-<p>Hit refresh to update the stats below and publish that you're still waiting every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %>, otherwise you'll be marked as stale </p>
 
-<%= button_to "Refresh", '', :method => :get %>
+<p>Hit refresh to update the stats below and publish that you're still waiting, you will be marked as stale after <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> of inactivity </p>
+<%= render 'shared/spot_stats' %>
 
-<table>
-  <tr>
-    <td>
-      Destination
-    </td>
-    <td />
-    <td>
-      <%= image_tag('man_symbol.png') %> 
-    </td>
-    <td>
-      <%= image_tag('car_symbol.png') %> 
-    </td>
-  </tr>
-  <% DestinationSpot.find(:all, :conditions => ["name != ?", "San Francisco"]).each do |spot| %>
-    <tr>      
-      <td>
-       <%= spot.name %>
-      </td>
-      <td />
-      <td>
-        <%= spot.waiting_riders.count %>
-      </td>
-      <td align="center">
-        <%= spot.waiting_drivers.count %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= render 'navigation' %>
