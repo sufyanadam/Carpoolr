@@ -1,5 +1,9 @@
 class DriversController < ApplicationController
   def new
+    if location = cookies[:location]
+      lat, lng = location.split('--').map(&:to_f)
+      go_to_spot PickupSpot.find_closest(lat, lng)
+    end
   end
 
   def create
@@ -8,14 +12,7 @@ class DriversController < ApplicationController
     if driver[:destination_spot_id]
       sf_create(driver)
     else
-      pickup_spot = PickupSpot.find_by_id(driver[:pickup_spot_id])
-      if pickup_spot.name == "San Francisco"
-        return redirect_to :action => :set_destination_spot
-      else
-        @driver = Driver.create!(params[:driver])
-        session[:driver_id] = @driver.id
-        redirect_to :action => :waiting
-      end
+      go_to_spot PickupSpot.find_by_id(driver[:pickup_spot_id])
     end
   end
 
@@ -46,5 +43,17 @@ class DriversController < ApplicationController
     @driver = Driver.find_by_id(session[:driver_id])
     @driver.destroy if @driver
     redirect_to root_path
+  end
+
+  private
+
+  def go_to_spot(pickup_spot)
+    if pickup_spot.name == "San Francisco"
+      redirect_to :action => :set_destination_spot
+    else
+      @driver = Driver.create!(:pickup_spot => pickup_spot)
+      session[:driver_id] = @driver.id
+      redirect_to :action => :waiting
+    end
   end
 end

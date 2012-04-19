@@ -1,13 +1,43 @@
+<p>Finding your location... <span id="status">checking...</span></p>
+<script>
+  $(function () {
+    var s = $('#status');
+
+    function success(position) {
+      s.html("found you!");
+      setCookie('location', "" + position.coords.latitude + "--" + position.coords.longitude)
+    }
+
+    function error(msg) {
+      s.html(typeof msg == 'string' ? msg : "failed");
+    }
+
+    var timeout = (document.location.href.indexOf('slow_location') >= 0 ? 200 : 0);
+
+    setTimeout(function(){
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+      } else {
+        error('not supported');
+      }
+    }, timeout)
+  });
+
+  function setCookie(name,value) {
+    document.cookie = name+"="+value+"; path=/";
+  }
+</script>
+
 <%= button_link_to "Who's waiting?", pickup_spots_path %>
 
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
 
 <%= button_link_to "I need &nbsp; #{image_tag('car_symbol.png')}".html_safe, new_rider_path %>
 
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
 
 <%= button_link_to "I need &nbsp; #{image_tag('man_symbol.png')}".html_safe, new_driver_path %>
