@@ -25,5 +25,6 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
-  gem 'rspec-rails'            
+  gem 'capybara'
+  gem 'rspec-rails'
 end
