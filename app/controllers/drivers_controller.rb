@@ -2,6 +2,7 @@ class DriversController < ApplicationController
   def new
     if location = cookies[:location]
       lat, lng = location.split('--').map(&:to_f)
+
       go_to_spot PickupSpot.find_closest(lat, lng)
     end
   end

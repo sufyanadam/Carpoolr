@@ -1,5 +1,10 @@
 class RidersController < ApplicationController
   def new
+    if location = cookies[:location]
+      lat, lng = location.split('--').map(&:to_f)
+
+      go_to_spot PickupSpot.find_closest(lat, lng)
+    end
   end
 
   def sf_create(rider)
@@ -7,7 +12,7 @@ class RidersController < ApplicationController
     sf_pickup_spot_id = PickupSpot.find_by_name("San Francisco").id
     @rider = Rider.create!(:pickup_spot_id => sf_pickup_spot_id, :destination_spot_id => @destination_spot.id)
     session[:rider_id] = @rider.id
-    return redirect_to :action => :sf_waiting
+    redirect_to :action => :sf_waiting
   end
 
   def create
@@ -16,14 +21,7 @@ class RidersController < ApplicationController
     if rider[:destination_spot_id]
       sf_create(rider)
     else
-      @pickup_spot = PickupSpot.find_by_id(rider[:pickup_spot_id])
-      if @pickup_spot.name == "San Francisco"
-        return redirect_to :action => :set_destination_spot
-      else
-        @rider = Rider.create!(params[:rider])
-        session[:rider_id] = @rider.id
-        redirect_to :action => :waiting
-      end
+      go_to_spot PickupSpot.find_by_id(rider[:pickup_spot_id])
     end
   end
   
@@ -46,5 +44,20 @@ class RidersController < ApplicationController
   end
 
   def set_destination_spot
+  end
+
+  private
+
+  def go_to_spot(pickup_spot)
+    p "found pickup spot"
+    p pickup_spot
+
+    if pickup_spot.name == "San Francisco"
+      redirect_to :action => :set_destination_spot
+    else
+      @rider = Rider.create!(:pickup_spot => pickup_spot)
+      session[:rider_id] = @rider.id
+      redirect_to :action => :waiting
+    end
   end
 end

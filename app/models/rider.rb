@@ -11,7 +11,7 @@
 
 class Rider < ActiveRecord::Base
   MAX_LAST_SEEN_AT = 5.minutes
-  attr_accessible :pickup_spot_id, :last_seen_at, :destination_spot_id
+  attr_accessible :pickup_spot, :last_seen_at, :destination_spot_id
   validates_presence_of :pickup_spot_id
   belongs_to(:pickup_spot)
   belongs_to(:destination_spot)

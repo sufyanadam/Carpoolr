@@ -1,6 +1,6 @@
 <p>You're all set!</p>
 
-<%= render 'shared/spot_stats', :resource => @rider %>
+<%= render 'shared/waiting_stats', :resource => @rider %>
 
 <p>
   Hit the refresh button at least every <%= distance_of_time_in_words Rider::MAX_LAST_SEEN_AT %> minutes to avoid being marked as stale. You will also see if any drivers might be on their way
