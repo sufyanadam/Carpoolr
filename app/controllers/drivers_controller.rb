@@ -20,7 +20,7 @@ class DriversController < ApplicationController
   def sf_create(driver)
     @destination_spot = DestinationSpot.find_by_id(driver[:destination_spot_id])
     sf_pickup_spot_id = PickupSpot.find_by_name("San Francisco").id
-    @driver = Driver.create!(:pickup_spot_id => sf_pickup_spot_id, :destination_spot_id => @destination_spot.id)
+    @driver = Driver.create!(:pickup_spot_id => sf_pickup_spot_id, :destination_spot => @destination_spot)
     session[:driver_id] = @driver.id
     return redirect_to :action => :sf_waiting
   end
