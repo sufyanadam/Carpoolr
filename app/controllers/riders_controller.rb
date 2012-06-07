@@ -9,8 +9,8 @@ class RidersController < ApplicationController
 
   def sf_create(rider)
     @destination_spot = DestinationSpot.find_by_id(rider[:destination_spot_id])
-    sf_pickup_spot_id = PickupSpot.find_by_name("San Francisco").id
-    @rider = Rider.create!(:pickup_spot_id => sf_pickup_spot_id, :destination_spot => @destination_spot)
+    pickup_spot = PickupSpot.find_by_name("San Francisco")
+    @rider = Rider.create!(:pickup_spot => pickup_spot, :destination_spot => @destination_spot)
     session[:rider_id] = @rider.id
     redirect_to :action => :sf_waiting
   end

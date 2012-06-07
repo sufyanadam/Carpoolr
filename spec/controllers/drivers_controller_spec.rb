@@ -21,13 +21,13 @@ describe DriversController do
   end
 
   describe "#waiting"  do
-    it "should render" do
+    it "renders" do
       session[:driver_id] = Driver.create!(:pickup_spot_id => PickupSpot.create!.id ).id
       get :waiting
       response.should render_template "waiting"
     end
 
-    it "should redirect if there is no rider" do
+    it "redirects if there is no rider" do
       get :waiting
       response.should redirect_to "/"
     end
