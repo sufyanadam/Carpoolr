@@ -10,13 +10,13 @@
 #
 
 class PickupSpot < ActiveRecord::Base
-  attr_accessible :name, :lat, :lng
+  # attr_accessible :name, :lat, :lng
 
+  MAX_LAST_SEEN_AT = 5.minutes
   reverse_geocoded_by :lat, :lng
 
-  has_many :waiting_riders, :conditions => lambda {|_| Rider.waiting_condition }, :class_name => "Rider"
-  has_many :waiting_drivers, :conditions => lambda { |_| Driver.waiting_condition }, :class_name => "Driver"
-
+  has_many :waiting_riders, -> { where(last_seen_at: MAX_LAST_SEEN_AT.ago..(Time.current)) }, :class_name => "Rider"
+  has_many :waiting_drivers, -> { where(last_seen_at: MAX_LAST_SEEN_AT.ago..(Time.current)) }, :class_name => "Driver"
   
   def self.san_francisco
     find_by_name("San Francisco") || raise("San Francisco not found! (earthquake?)")

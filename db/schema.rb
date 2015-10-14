@@ -9,36 +9,36 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120117024142) do
+ActiveRecord::Schema.define(version: 20120117024142) do
 
-  create_table "destination_spots", :force => true do |t|
+  create_table "destination_spots", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "drivers", :force => true do |t|
+  create_table "drivers", force: :cascade do |t|
     t.integer  "pickup_spot_id"
-    t.integer  "number_of_seats",                                     :default => 0, :null => false
-    t.decimal  "lat",                 :precision => 15, :scale => 10
-    t.decimal  "lng",                 :precision => 15, :scale => 10
+    t.integer  "number_of_seats",                               default: 0, null: false
+    t.decimal  "lat",                 precision: 15, scale: 10
+    t.decimal  "lng",                 precision: 15, scale: 10
     t.datetime "last_seen_at"
     t.integer  "destination_spot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pickup_spots", :force => true do |t|
+  create_table "pickup_spots", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "lat",        :precision => 15, :scale => 10
-    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.decimal  "lat",        precision: 15, scale: 10
+    t.decimal  "lng",        precision: 15, scale: 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "riders", :force => true do |t|
+  create_table "riders", force: :cascade do |t|
     t.integer  "pickup_spot_id"
     t.datetime "last_seen_at"
     t.integer  "destination_spot_id"

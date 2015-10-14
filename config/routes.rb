@@ -17,5 +17,5 @@ Carpoolr::Application.routes.draw do
   
   resources :pickup_spots
 
-  root :to => 'home#index'
+  root to: 'home#index'
 end
