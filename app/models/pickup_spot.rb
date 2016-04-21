@@ -23,6 +23,6 @@ class PickupSpot < ActiveRecord::Base
   end
 
   def self.find_closest(lat, lng)
-    self.near([lat, lng], 1).first
+    self.near([lat, lng], 5).first
   end
 end
