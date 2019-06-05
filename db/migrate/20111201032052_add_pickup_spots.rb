@@ -1,4 +1,4 @@
-class AddPickupSpots < ActiveRecord::Migration
+class AddPickupSpots < ActiveRecord::Migration[5.2]
   def up
     PickupSpot.create!(:name => "Alameda (Encinal & Park Ave)", :lat => 37.762074, :lng => -122.243378 )
     PickupSpot.create!(:name => "Alameda (Webster & Santa Clara)", :lat => 37.773331, :lng => -122.276764)

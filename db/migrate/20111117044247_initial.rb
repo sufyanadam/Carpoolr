@@ -1,4 +1,4 @@
-class Initial < ActiveRecord::Migration
+class Initial < ActiveRecord::Migration[5.2]
   def change
     create_table :drivers do |t|
       t.integer :pickup_spot_id
