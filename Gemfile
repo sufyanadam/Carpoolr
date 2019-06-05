@@ -1,17 +1,9 @@
 source 'http://rubygems.org'
-ruby '2.3.0'
+ruby '2.6.1'
 
-gem 'rails', '4.2.4'
+gem 'rails', '5.2.3'
 gem 'geocoder'
-
-group :development do
-  gem 'heroku'
-  gem 'sqlite3'   
-end
-
-group :production do 
-  gem 'pg'
-end
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.

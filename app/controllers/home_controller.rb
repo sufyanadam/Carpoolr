@@ -7,5 +7,4 @@ class HomeController < ApplicationController
 
   def find_riders
   end
-
 end

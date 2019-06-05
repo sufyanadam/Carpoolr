@@ -1,4 +1,4 @@
-class AddDestinationSpots < ActiveRecord::Migration
+class AddDestinationSpots < ActiveRecord::Migration[5.2]
   def up
     DestinationSpot.create!(:name => "San Francisco")
     DestinationSpot.create!(:name => "Hercules")
