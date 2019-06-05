@@ -4,6 +4,7 @@ ruby '2.6.1'
 gem 'rails', '5.2.3'
 gem 'geocoder'
 gem 'pg'
+gem 'interactor'
 
 # Gems used only for assets and not required
 # in production environments by default.

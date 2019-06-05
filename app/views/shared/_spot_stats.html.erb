@@ -12,7 +12,7 @@
       <%= image_tag('car_symbol.png') %>
     </td>
   </tr>
-  <% DestinationSpot.find(:all, :conditions => ["name != ?", "San Francisco"]).each do |spot| %>
+  <% DestinationSpot.where.not(name: 'San Francisco').each do |spot| %>
     <tr>
       <td>
         <%= spot.name %>

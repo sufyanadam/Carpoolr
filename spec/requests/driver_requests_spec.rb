@@ -15,7 +15,8 @@ describe "driver", :js => true do
   end
 
   it "registers a new driver" do
-    PickupSpot.create!(:name => "Richmond Pkwy")
+    PickupSpot.create!(name: "Richmond Pkwy")
+    DestinationSpot.create!(name: 'San Francisco')
 
     Capybara.visit '/'
     click_new_driver
