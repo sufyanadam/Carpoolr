@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.6.1'
 
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.7.1'
 gem 'geocoder'
 gem 'pg'
 
