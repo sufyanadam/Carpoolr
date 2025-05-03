@@ -18,6 +18,6 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'capybara'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 8.0.0'
   gem 'pry'
 end
