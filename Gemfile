@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.6.1'
 
-gem 'rails', '5.2.3'
+gem 'rails', '7.1.0'
 gem 'geocoder'
 gem 'pg'
 
@@ -14,10 +14,10 @@ group :assets do
   gem 'therubyracer', :platform => :ruby
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.4'
 
 group :test, :development do
-  gem 'capybara'
-  gem 'rspec-rails'
+  gem 'capybara', '>= 3.23.0'
+  gem 'rspec-rails', '>= 3.8.3'
   gem 'pry'
 end
